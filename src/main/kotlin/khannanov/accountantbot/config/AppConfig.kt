@@ -9,7 +9,7 @@ class AppConfig {
 
     @Bean
     fun messageSource() = ResourceBundleMessageSource().apply {
-        setBasename("dictionary/messages")
+        setBasename("locales/messages")
         setDefaultEncoding("UTF-8")
     }
 }
