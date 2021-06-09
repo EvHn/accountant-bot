@@ -7,6 +7,9 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage
 import org.telegram.telegrambots.meta.api.objects.Message
 import org.telegram.telegrambots.meta.api.objects.Update
 
+/**
+ * Сервис обработки сообщений
+ */
 @Service
 class MessageService(@Value("\${bot.auth.users}")
                      private val users: List<String>,

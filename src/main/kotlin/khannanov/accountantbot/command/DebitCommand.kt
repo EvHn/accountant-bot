@@ -8,6 +8,9 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage
 import org.telegram.telegrambots.meta.api.objects.Message
 import java.util.*
 
+/**
+ * Добавление записи дебета
+ */
 open class DebitCommand(private val recordRepository: IRecordRepository, messageSource: MessageSource) : ICommand(messageSource) {
 
     private val sumRegex = "^(!-|\\+|)[0-9]{1,10}(\\.[0-9]{0,2}|)\$".toRegex()

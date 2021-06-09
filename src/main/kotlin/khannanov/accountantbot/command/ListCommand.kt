@@ -6,6 +6,9 @@ import org.springframework.context.MessageSource
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage
 import org.telegram.telegrambots.meta.api.objects.Message
 
+/**
+ * Показать записи
+ */
 class ListCommand(private val recordRepository: IRecordRepository, messageSource: MessageSource) : ICommand(messageSource) {
     override fun execute(message: Message): SendMessage {
         val (_, chat) = getUserAndChat(message)
