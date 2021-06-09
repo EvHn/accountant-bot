@@ -8,11 +8,10 @@ import org.telegram.telegrambots.meta.api.objects.Message
 
 class ReportCommand(private val recordRepository: IRecordRepository, messageSource: MessageSource) : ICommand(messageSource) {
     override fun execute(message: Message): SendMessage {
-        val (user, chat) = getUserAndChat(message)
-        val records = recordRepository.getByChatId(chat.id)
-        val sum = records.sumOf { it.sum }
-        return createMessage(chat,
-            records.joinToString(separator = "\n") { "${it.sum.toMoneyString()} : ${it.description}" }
-                    + getMessage(user, "messages.total_sum", sum.toMoneyString()))
+        val reports = recordRepository.getByChatId(message.chatId)
+        val creditSum = reports.filter { it.sum < 0 }.sumOf { it.sum }
+        val debitSum = reports.filter { it.sum > 0 }.sumOf { it.sum }
+        return createMessage(message.chat,
+            "Credit: ${creditSum.toMoneyString()}\nDebit: ${debitSum.toMoneyString()}\nTotal sum: ${(debitSum + creditSum).toMoneyString()}")
     }
 }

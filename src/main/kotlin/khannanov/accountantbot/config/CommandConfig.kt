@@ -1,9 +1,6 @@
 package khannanov.accountantbot.config
 
-import khannanov.accountantbot.command.CreditCommand
-import khannanov.accountantbot.command.DebitCommand
-import khannanov.accountantbot.command.DeleteCommand
-import khannanov.accountantbot.command.ReportCommand
+import khannanov.accountantbot.command.*
 import khannanov.accountantbot.repository.IRecordRepository
 import org.springframework.context.MessageSource
 import org.springframework.context.annotation.Bean
@@ -29,6 +26,12 @@ class CommandConfig {
 
     @Bean("/delete")
     fun deleteCommand(recordRepository: IRecordRepository, messageSource: MessageSource) = DeleteCommand(recordRepository, messageSource)
+
+    @Bean("/ls")
+    fun lsCommand(recordRepository: IRecordRepository, messageSource: MessageSource) = ListCommand(recordRepository, messageSource)
+
+    @Bean("/list")
+    fun listCommand(recordRepository: IRecordRepository, messageSource: MessageSource) = ListCommand(recordRepository, messageSource)
 
     @Bean("/rp")
     fun rpCommand(recordRepository: IRecordRepository, messageSource: MessageSource) = ReportCommand(recordRepository, messageSource)
