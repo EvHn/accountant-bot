@@ -12,17 +12,17 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 class CommandConfig {
 
-    @Bean("/cr")
-    fun crCommand(recordRepository: IRecordRepository, messageSource: MessageSource) = CreditCommand(recordRepository, messageSource)
+    @Bean("/mn")
+    fun mnCommand(recordRepository: IRecordRepository, messageSource: MessageSource) = MinusCommand(recordRepository, messageSource)
 
-    @Bean("/credit")
-    fun creditCommand(recordRepository: IRecordRepository, messageSource: MessageSource) = CreditCommand(recordRepository, messageSource)
+    @Bean("/minus")
+    fun minusCommand(recordRepository: IRecordRepository, messageSource: MessageSource) = MinusCommand(recordRepository, messageSource)
 
-    @Bean("/db")
-    fun dbCommand(recordRepository: IRecordRepository, messageSource: MessageSource) = DebitCommand(recordRepository, messageSource)
+    @Bean("/pl")
+    fun plCommand(recordRepository: IRecordRepository, messageSource: MessageSource) = PlusCommand(recordRepository, messageSource)
 
-    @Bean("/debit")
-    fun debitCommand(recordRepository: IRecordRepository, messageSource: MessageSource) = DebitCommand(recordRepository, messageSource)
+    @Bean("/plus")
+    fun plusCommand(recordRepository: IRecordRepository, messageSource: MessageSource) = PlusCommand(recordRepository, messageSource)
 
     @Bean("/dl")
     fun dlCommand(recordRepository: IRecordRepository, messageSource: MessageSource) = DeleteCommand(recordRepository, messageSource)

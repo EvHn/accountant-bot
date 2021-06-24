@@ -4,8 +4,8 @@ import khannanov.accountantbot.repository.IRecordRepository
 import org.springframework.context.MessageSource
 
 /**
- * Добавление записи кредита
+ * Добавление отрицательной записи
  */
-class CreditCommand(recordRepository: IRecordRepository, messageSource: MessageSource) : DebitCommand(recordRepository, messageSource) {
+class MinusCommand(recordRepository: IRecordRepository, messageSource: MessageSource) : PlusCommand(recordRepository, messageSource) {
     override fun String.getSum() = -this.toDouble()
 }

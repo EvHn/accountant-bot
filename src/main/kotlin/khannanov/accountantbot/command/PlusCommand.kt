@@ -9,9 +9,9 @@ import org.telegram.telegrambots.meta.api.objects.Message
 import java.util.*
 
 /**
- * Добавление записи дебета
+ * Добавление положительной записи
  */
-open class DebitCommand(private val recordRepository: IRecordRepository, messageSource: MessageSource) : ICommand(messageSource) {
+open class PlusCommand(private val recordRepository: IRecordRepository, messageSource: MessageSource) : ICommand(messageSource) {
 
     private val sumRegex = "^(!-|\\+|)[0-9]{1,10}(\\.[0-9]{0,2}|)\$".toRegex()
 
